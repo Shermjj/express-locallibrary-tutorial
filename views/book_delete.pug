@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1 #{title}: #{book.title} : #{book.author}
+  p=book.summary
+
+  if book_instance.length
+    p #[strong Delet bookinstance]
+
+    div()
+      h4 Book Instance
+      dl
+      each boo_instance in book_instance
+        dt
+          a(href=boo_instance.url) #{book.title}
+        dd
+  else 
+    p really delte?
+
+    form(method='POST' action='')
+      div.form-group
+        input#bookid.form-control(type='hidden',name='bookid',required='true',value=book._id)
+
+      button.btn.btn-primary(type='submit') Delete  
+
+
+
